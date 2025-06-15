@@ -12,6 +12,22 @@ app.use((req, res, next) => {
   next();
 });
 
+const checkToken = (req, res, next) => {
+  let { token } = req.query;
+  if (token === "give_access") {
+    return next();
+  }
+  res.send("ACCESS TOKEN REQUIRED!");
+};
+
 app.get("/", (req, res) => {
   res.send("root page");
+});
+
+app.get("/api", checkToken, (req, res) => {
+  res.send("api returned this data");
+});
+
+app.use((req, res) => {
+  res.status(404).send("Page Not Found!");
 });
