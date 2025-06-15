@@ -17,7 +17,7 @@ const checkToken = (req, res, next) => {
   if (token === "give_access") {
     return next();
   }
-  res.send("ACCESS TOKEN REQUIRED!");
+  throw new Error("ACCESS TOKEN REQUIRED!");
 };
 
 app.get("/", (req, res) => {
