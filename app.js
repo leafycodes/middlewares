@@ -13,5 +13,5 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("root");
+  res.send("root page");
 });
